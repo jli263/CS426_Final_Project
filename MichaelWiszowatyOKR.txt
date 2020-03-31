@@ -1,0 +1,10 @@
+Schedule and deliverable:
+	AI Enemy Detection -- Tue by 6pm (estimate: 4 hrs)
+	  - Enemy moves towards user
+	  - Enemy notifies user that they have been detected
+	  - Place enemy assets around map
+
+	GUI System environment -- Tue by 7pm (estimate: 1 hr)
+	  - Top/Center day tracker
+	  - Bottom/Left health bar. 
+	
