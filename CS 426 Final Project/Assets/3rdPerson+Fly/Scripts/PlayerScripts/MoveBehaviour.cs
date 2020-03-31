@@ -35,7 +35,7 @@ public class MoveBehaviour : GenericBehaviour
 	void Update()
 	{
 		// Get jump input.
-		if (!jump && Input.GetButtonDown(jumpButton) && behaviourManager.IsCurrentBehaviour(this.behaviourCode) && !behaviourManager.IsOverriding())
+		if (!jump && Input.GetButtonDown(jumpButton) && behaviourManager.IsCurrentBehaviour(this.behaviourCode) && !behaviourManager.IsOverriding() && !Input.GetKey(KeyCode.C))
 		{
 			jump = true;
 		}
@@ -108,6 +108,16 @@ public class MoveBehaviour : GenericBehaviour
 		else if (!behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.GetRigidBody.velocity.y > 0)
 		{
 			RemoveVerticalVelocity();
+		}
+
+		if (Input.GetKey(KeyCode.C))
+		{
+			behaviourManager.GetAnim.SetBool("IsCrouching", true);
+			transform.Translate(horizontal * Time.deltaTime * sprintSpeed, 0f, vertical * Time.deltaTime * sprintSpeed);
+		}
+		else
+		{
+			behaviourManager.GetAnim.SetBool("IsCrouching", false);
 		}
 
 		// Call function that deals with player orientation.
