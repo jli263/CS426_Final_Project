@@ -1,0 +1,5 @@
+Schedule and deliverable:
+        Add third person controller(walk/run/jump) to custom models with animations -- Monday by 12pm (estimate: 2 hr)
+	Add player starting position -- Monday by 1am (estimate: 15 minutes)
+        Add sneak to player movements with animations -- Tuesday by 1pm (estimate: 2 hr)
+        
