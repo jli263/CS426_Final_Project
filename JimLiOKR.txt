@@ -1,0 +1,7 @@
+Schedule and deliverable:
+ - Prototype game environment (buildings, fences, misc) -- Monday by 8:00 PM (estimate 2 hrs)
+ - Inventory system -- Tuesday by 6:00 PM (estimate 4 hrs)
+     - Item pickup/drop (estimate 2 hour)
+	- Item placement around the game environment  
+     - Inventory Menu and item navigation (estimate 2 hour)
+	- Use/drop items
