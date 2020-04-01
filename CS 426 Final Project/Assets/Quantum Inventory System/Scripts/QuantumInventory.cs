@@ -414,7 +414,12 @@ public class QuantumInventory : MonoBehaviour
         if (slot.isIntel)
         {
             GameObject[] intels = IntelManager.getInstance().getIntels();
-            intels[0].SetActive(true);
+            for (int i = 0; i < intels.Length; i++)
+            {
+                if (intels[i].name.Equals(slot.item))
+                    intels[i].SetActive(true);
+            }
+           
         }
         else
         {
