@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 {
 
     public float lookRadius = 10f;
+    static Animator anim;
 
     Transform target;
     NavMeshAgent agent;
@@ -15,15 +16,18 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-
-        if(distance <= lookRadius)
+        //anim.SetBool("isJogging", true);
+        if (distance <= lookRadius)
         {
+            //anim.SetBool("isIdle", false);
+            //anim.SetBool("isJogging", true);
             agent.SetDestination(target.position);
         }
     }
