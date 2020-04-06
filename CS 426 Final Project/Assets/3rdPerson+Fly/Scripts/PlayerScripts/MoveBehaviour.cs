@@ -21,6 +21,7 @@ public class MoveBehaviour : GenericBehaviour
     private const float timeToCharge = 0.4f;
     private float chargeTimer = 0.0f;
 
+
     // Start is always called after any Awake functions.
     void Start()
     {
