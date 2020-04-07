@@ -4,12 +4,15 @@
 # AI/Mecanim construct
 
 Civilian Wander AI uisng a FSM was constructed by Angel Naranjo
+
 Player Mecanim was contrsucted by Angel Naranjo
 
 Patrol AI using pathfinding was constructed by Jim Li
+
 Enemy Mecanim was contrsucted by Jim Li
 
 Chasing Player AI using pathfinding was contructed by Michael Wiszowaty
+
 Civilian Mecanim was contructed by Michael Wiszowaty
 
 # Design Explanation:
