@@ -17,7 +17,7 @@ Civilian Mecanim was contructed by Michael Wiszowaty
 
 # Design Explanation:
 The map design was created with a realistic aproach of a military base within a village that our soviet spy must infiltrate.
-As a result, civilians were added wandering throughout the city while there are german soilders that are patrolling the base entrances and the city. For the guards it makes sense for the guards to be able to patrol and chase the player so those two AI scripts were added to the guards.
+As a result, civilians were added wandering throughout the city while there are german soilders that are patrolling the base entrances and the city. For the guards it makes sense for the guards to be able to patrol and chase the player so those two AI scripts were added to the guards. Traps were added such that the player is bottlenecked into the 4 entrances into the military based where guards patroll so he must time his entrance to when the guard walks a way or moves away.
 
 # Sources:
 Third Person Controller: https://assetstore.unity.com/packages/templates/systems/3rd-person-controller-fly-mode-28647
