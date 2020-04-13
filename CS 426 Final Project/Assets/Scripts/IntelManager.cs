@@ -6,7 +6,7 @@ public class IntelManager
 {
     private static IntelManager intelManager;
 
-    private GameObject[] intels;
+    private GameObject[] objects;
 
     private IntelManager() { }
 
@@ -15,12 +15,12 @@ public class IntelManager
         if (intelManager == null)
         {
             intelManager = new IntelManager();
-            intelManager.intels = GameObject.FindGameObjectsWithTag("Intel");
+            intelManager.objects = GameObject.FindGameObjectsWithTag("InteractObject");
         }
         return intelManager;
     }
 
-    public GameObject[] getIntels () {
-        return intels;
+    public GameObject[] getObjects () {
+        return objects;
     }
 }

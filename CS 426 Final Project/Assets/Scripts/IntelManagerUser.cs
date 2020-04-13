@@ -8,7 +8,7 @@ public class IntelManagerUser : MonoBehaviour
     void Start()
     {
         IntelManager.getInstance();
-        Debug.Log(IntelManager.getInstance().getIntels().Length);
+        Debug.Log(IntelManager.getInstance().getObjects().Length);
     }
 
 }

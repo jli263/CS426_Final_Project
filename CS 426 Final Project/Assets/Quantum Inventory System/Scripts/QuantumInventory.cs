@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class QuantumInventory : MonoBehaviour
 {
     [System.NonSerialized] public List<Slot> inventory, hotbar, slots;
@@ -29,9 +30,12 @@ public class QuantumInventory : MonoBehaviour
     Dropdown sort;
     Text info;
     QuantumContainer quantumContainer;
+    Text interactText;
 
     private void Start()
     {
+        interactText = GameObject.Find("InteractionText").GetComponent<Text>();
+
         o = !o;
         inventory = new List<Slot>();
         hotbar = new List<Slot>();
@@ -81,9 +85,19 @@ public class QuantumInventory : MonoBehaviour
 
     private void Update()
     {
+        RaycastHit hit;
+
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, distance) && hit.collider.gameObject.tag.Equals("InteractObject"))
+        {
+            interactText.text = "Press E to collect Item!";
+        }
+        else
+        {
+            interactText.text = "";
+        }
+
         if (Input.GetKeyDown(interact))
         {
-            RaycastHit hit;
             int layer = gameObject.layer;
             gameObject.layer = 2;
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, distance))
@@ -411,16 +425,15 @@ public class QuantumInventory : MonoBehaviour
     private void Drop(Slot slot)
     {
 
-        if (slot.isIntel)
+   
+        GameObject[] interactionObjects = IntelManager.getInstance().getObjects();
+        for (int i = 0; i < interactionObjects.Length; i++)
         {
-            GameObject[] intels = IntelManager.getInstance().getIntels();
-            for (int i = 0; i < intels.Length; i++)
-            {
-                if (intels[i].name.Equals(slot.item))
-                    intels[i].SetActive(true);
-            }
-           
+            if (interactionObjects[i].name.Equals(slot.item))
+                interactionObjects[i].SetActive(true);
         }
+           
+        /*
         else
         {
             GameObject x = Resources.Load<GameObject>("Core/QIS/" + slot.item);
@@ -440,7 +453,7 @@ public class QuantumInventory : MonoBehaviour
                 x.GetComponent<QuantumItem>().icon = slot.icon;
             x.GetComponent<QuantumItem>().stackable = slot.stackable;
             x.GetComponent<QuantumItem>().metaData = slot.metaData;
-        }
+        } */
     }
 
     private void SetActive(bool container, bool options, bool viewer)
