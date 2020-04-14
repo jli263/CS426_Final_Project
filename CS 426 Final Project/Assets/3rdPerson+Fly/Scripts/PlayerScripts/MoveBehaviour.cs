@@ -138,6 +138,7 @@ public class MoveBehaviour : GenericBehaviour
 			RemoveVerticalVelocity();
 		}
 
+		/*
 		if (Input.GetKey(KeyCode.C))
 		{
 			behaviourManager.GetAnim.SetBool("IsCrouching", true);
@@ -147,6 +148,7 @@ public class MoveBehaviour : GenericBehaviour
 		{
 			behaviourManager.GetAnim.SetBool("IsCrouching", false);
 		}
+		*/
 
 		// Call function that deals with player orientation.
 		Rotating(horizontal, vertical);
