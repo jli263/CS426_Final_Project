@@ -13,6 +13,8 @@ public class QuantumInventory : MonoBehaviour
     public float distance;
 
     GameObject inventoryObj;
+    public GameObject escapeMenu;
+    bool escapeMenuOn = false;
 
     GameObject[] go;
     // [0 SLOT][1 INVENTORY][2 HOTBAR][3 ITEM]
@@ -87,13 +89,25 @@ public class QuantumInventory : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, distance) && hit.collider.gameObject.tag.Equals("InteractObject"))
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, distance))
         {
-            interactText.text = "Press E to collect Item!";
-        }
-        else
-        {
-            interactText.text = "";
+            if (hit.collider.gameObject.tag.Equals("InteractObject"))
+                interactText.text = "Press E to collect Item!";
+            else if (hit.collider.gameObject.tag.Equals("EscapeCollider"))
+            {
+                interactText.text = "Press Q to escape the base!";
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    if(escapeMenuOn == false)
+                    {
+                        Time.timeScale = 0f;
+                        escapeMenu.SetActive(true);
+                        escapeMenuOn = true;
+                    }
+                }
+            }
+            else
+                interactText.text = "";
         }
 
         if (Input.GetKeyDown(interact))

@@ -27,6 +27,7 @@ public class EscapeMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("GameScene"); 
+        SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1f;
     }
 }
