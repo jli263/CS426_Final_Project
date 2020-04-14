@@ -39,6 +39,8 @@ public class QuantumInventory : MonoBehaviour
     private void Start()
     {
         interactText = GameObject.Find("InteractionText").GetComponent<Text>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         o = !o;
         inventory = new List<Slot>();
@@ -103,6 +105,8 @@ public class QuantumInventory : MonoBehaviour
                     if(escapeMenuOn == false)
                     {
                         Time.timeScale = 0f;
+                        Cursor.visible = true;
+                        Cursor.lockState = CursorLockMode.None;
                         escapeMenu.SetActive(true);
                         escapeMenuOn = true;
                     }
@@ -120,7 +124,8 @@ public class QuantumInventory : MonoBehaviour
             {
                 if (hit.collider.GetComponent<QuantumItem>() != null)
                 {
-                    scoreManager.AddPoint();
+                    if(hit.collider.GetComponent<QuantumItem>().isIntel)
+                        scoreManager.AddPoint();
                     Gather(hit.collider.GetComponent<QuantumItem>());
                 }
                 else if (hit.collider.GetComponent<QuantumContainer>() != null)
@@ -450,6 +455,7 @@ public class QuantumInventory : MonoBehaviour
         {
             if (interactionObjects[i].name.Equals(slot.item))
                 interactionObjects[i].SetActive(true);
+
         }
            
         /*

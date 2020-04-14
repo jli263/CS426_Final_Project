@@ -14,12 +14,6 @@ public class EscapeMenu : MonoBehaviour
         escapePanel.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            escapePanel.SetActive(true);
-    }
-
     public void QuitGame()
     {
         Application.Quit();
