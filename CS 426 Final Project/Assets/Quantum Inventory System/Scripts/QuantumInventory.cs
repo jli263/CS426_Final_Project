@@ -12,6 +12,8 @@ public class QuantumInventory : MonoBehaviour
     public AudioClip open, close, pickUp, moveSlot, drop;
     public float distance;
 
+    public IntelCollected scoreManager;
+
     GameObject inventoryObj;
     public GameObject escapeMenu;
     bool escapeMenuOn = false;
@@ -117,7 +119,10 @@ public class QuantumInventory : MonoBehaviour
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, distance))
             {
                 if (hit.collider.GetComponent<QuantumItem>() != null)
+                {
+                    scoreManager.AddPoint();
                     Gather(hit.collider.GetComponent<QuantumItem>());
+                }
                 else if (hit.collider.GetComponent<QuantumContainer>() != null)
                     Container(hit.collider.GetComponent<QuantumContainer>());
             }

@@ -24,9 +24,11 @@ public class SoldierPatrol : MonoBehaviour
     int currPatrolIndex = 0;
     bool isMoving;
     bool isWaiting;
+    bool isDetected = false;
     bool originalPath = true;
     float timeElapsed;
 
+    public GameObject UiObject;
 
     //
 
@@ -54,7 +56,7 @@ public class SoldierPatrol : MonoBehaviour
         //agent = GetComponent<NavMeshAgent>();
         audioSound = GetComponent<AudioSource>();
         //
-
+        UiObject.SetActive(false);
 
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         animator = this.GetComponent<Animator>();
@@ -72,6 +74,14 @@ public class SoldierPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDetected)
+        {
+            UiObject.SetActive(true);
+        }
+        else
+        {
+            UiObject.SetActive(false);
+        }
         if (isMoving)
         {
             animator.SetBool("isWalking", true);
@@ -153,23 +163,31 @@ public class SoldierPatrol : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        isDetected = false;
+        //UiObject.SetActive(false);
         if (other.gameObject.CompareTag("Player"))
         {
+            isDetected = true;
             //get the angle of where the player was detected.
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
-
             //check if the player is within the angle of sight
             if (angle < 90.0f * 0.5f)
             {
+                //UiObject.SetActive(true);
+                isDetected = true;
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position + Vector3.up, direction, out hit, detectionRange.radius))
                 {
+                    isDetected = true;
                     if (hit.collider.gameObject.CompareTag("Player"))
                     {
+                        isDetected = true;
                         Debug.DrawRay(transform.position + Vector3.up, direction, Color.red);
                         Debug.Log("Playerfound");
+                        
                         navMeshAgent.SetDestination(target.position);
+
                         if (isAudioPlaying == false)
                         {
                             isAudioPlaying = true;
