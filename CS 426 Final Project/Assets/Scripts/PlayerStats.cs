@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class PlayerStats : GenericBehaviour
 {
 
-    public float hunger = 100f;
+    public float days = 100f;
+    public float daysOverTime = 0.25f;
+
+    public static float hunger = 100f;
     public float hungerOverTime = 0.5f;
 
     public float stamina = 100f;
@@ -14,6 +17,7 @@ public class PlayerStats : GenericBehaviour
 
     public Slider hungerBar;
     public Slider staminaBar;
+    public Slider dayBar;
     // Start is called before the first frame update
 
     Rigidbody myBody;
@@ -23,6 +27,7 @@ public class PlayerStats : GenericBehaviour
         myBody = GetComponent<Rigidbody>();
         hungerBar.maxValue = hunger;
         staminaBar.maxValue = stamina;
+        dayBar.maxValue = days;
 
         updateUi();
     }
@@ -53,6 +58,7 @@ public class PlayerStats : GenericBehaviour
     private void CalculateValues()
     {
         hunger -= hungerOverTime * Time.deltaTime;
+        days -= daysOverTime * Time.deltaTime;
 
         if (hunger <= 10)
         {
@@ -77,6 +83,11 @@ public class PlayerStats : GenericBehaviour
             Debug.Log("Player has Died");
         }
 
+        if (days <= 0.0f)
+        {
+            Debug.Log("Player has run out of time");
+        }
+
         if (stamina <= 0)
         {
             canSprint = false;
@@ -90,6 +101,7 @@ public class PlayerStats : GenericBehaviour
         }
 
         updateUi();
+        
 
     }
 
@@ -97,8 +109,10 @@ public class PlayerStats : GenericBehaviour
     {
         hunger = Mathf.Clamp(hunger, 0f, 100f);
         stamina = Mathf.Clamp(stamina, 0f, 100f);
+        days = Mathf.Clamp(days, 0f, 100f);
 
         hungerBar.value = hunger;
         staminaBar.value = stamina;
+        dayBar.value = days;
     }
 }

@@ -321,7 +321,13 @@ public class QuantumInventory : MonoBehaviour
 
     private void Action(Slot slot)
     {
-        if (Input.GetKey(KeyCode.LeftControl))
+
+        if (Input.GetKey(KeyCode.R) && slot.type.Equals("Consumable"))
+        {
+            PlayerStats.hunger += 10;
+            inventory.Remove(slot);
+        }
+        else if (Input.GetKey(KeyCode.LeftControl))
         {
             Drop(slot);
             inventory.Remove(slot);
