@@ -30,6 +30,8 @@ public class SoldierPatrol : MonoBehaviour
 
     public GameObject UiObject;
 
+    public GameOver gameOverScene;
+
     //
 
 
@@ -159,6 +161,15 @@ public class SoldierPatrol : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.name == "Player")
+        {
+            Debug.Log("HIT!!!!");
+            gameOverScene.gameOver();
+        }
+    }
+
 
 
     void OnTriggerStay(Collider other)
@@ -184,7 +195,7 @@ public class SoldierPatrol : MonoBehaviour
                     {
                         isDetected = true;
                         Debug.DrawRay(transform.position + Vector3.up, direction, Color.red);
-                        Debug.Log("Playerfound");
+                        //Debug.Log("Playerfound");
                         
                         navMeshAgent.SetDestination(target.position);
 

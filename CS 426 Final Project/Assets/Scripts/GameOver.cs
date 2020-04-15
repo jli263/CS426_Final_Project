@@ -7,16 +7,24 @@ public class GameOver : MonoBehaviour
 {
     public GameObject gameoverPanel;
 
+   
+   
+
     // Start is called before the first frame update
     void Start()
     {
         gameoverPanel.SetActive(false);
     }
 
-    private void Update()
+    public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            gameoverPanel.SetActive(true);
+       
+    }
+
+    public void gameOver()
+    {
+        gameoverPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void QuitGame()
