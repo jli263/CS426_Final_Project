@@ -35,10 +35,13 @@ public class QuantumInventory : MonoBehaviour
     Text info;
     QuantumContainer quantumContainer;
     Text interactText;
+    Text scoreText;
 
     private void Start()
     {
         interactText = GameObject.Find("InteractionText").GetComponent<Text>();
+        scoreText = GameObject.Find("IntelCollected_Text").GetComponent<Text>();
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -107,6 +110,7 @@ public class QuantumInventory : MonoBehaviour
                         Time.timeScale = 0f;
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
+                        scoreText.text = "You found " + IntelCollected.score + " out of 4 intel";
                         escapeMenu.SetActive(true);
                         escapeMenuOn = true;
                     }

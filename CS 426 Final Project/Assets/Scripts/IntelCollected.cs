@@ -8,7 +8,7 @@ public class IntelCollected : MonoBehaviour
     public Text intelText;
     public int maxScore = 4;
 
-    int score;
+    public static int score;
     // Start is called before the first frame update
     void Start()
     {
