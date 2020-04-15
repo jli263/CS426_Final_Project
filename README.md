@@ -32,5 +32,5 @@ Pathfinding Ai: https://www.youtube.com/watch?v=5q4JHuJAAcQ&t=332s
  
 Animations: mixamo.com
 
-# Intel Placement:https://imgur.com/kd6fUjQ
+# Map Information:https://imgur.com/yqfWgVw
 
