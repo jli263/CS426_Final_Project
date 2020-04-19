@@ -35,7 +35,7 @@ public class SoldierPatrol : MonoBehaviour
     //
 
 
-    public bool isAudioPlaying = false;
+    //public bool isAudioPlaying = false;
     public AudioSource audioSound;
 
     private const float timeToCharge = 10.5f;
@@ -167,6 +167,8 @@ public class SoldierPatrol : MonoBehaviour
         {
             Debug.Log("HIT!!!!");
             gameOverScene.gameOver();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -199,10 +201,11 @@ public class SoldierPatrol : MonoBehaviour
                         
                         navMeshAgent.SetDestination(target.position);
 
-                        if (isAudioPlaying == false)
+                        if (!audioSound.isPlaying)//isAudioPlaying == false)
                         {
-                            isAudioPlaying = true;
+                            //isAudioPlaying = true;
                             audioSound.Play();
+                            
                         }
 
                     }

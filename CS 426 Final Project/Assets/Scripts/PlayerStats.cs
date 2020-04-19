@@ -47,10 +47,10 @@ public class PlayerStats : GenericBehaviour
             behaviourManager.GetAnim.SetBool("IsCrouching", false);
         }
 
-        if (!Input.GetKey(KeyCode.W))
-        {
-            behaviourManager.GetAnim.SetBool("IsCrouching", false);
-        }
+        //if (!Input.GetKey(KeyCode.W))
+       // {
+        //    behaviourManager.GetAnim.SetBool("IsCrouching", false);
+        //}
 
         CalculateValues();
     }
