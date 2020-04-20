@@ -20,7 +20,7 @@ public class IntelCollected : MonoBehaviour
     public void AddPoint()
     {
         score++;
-        if(score != maxScore)
+        if(score < maxScore + 1)
             intelText.text = "Number of Intel Collected: " + score + "/4";
     }
 }
