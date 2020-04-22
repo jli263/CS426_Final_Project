@@ -7,20 +7,52 @@ public class IntelCollected : MonoBehaviour
 {
     public Text intelText;
     public int maxScore = 4;
+    public bool isTutorial = false;
 
     public static int score;
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
-        intelText.text = "Number of Intel Collected: " + score + "/4";
+        if (isTutorial)
+        {
+            intelText.text = "Number of Intel Collected: " + score + "/2";
+        }
+        else
+        {
+            intelText.text = "Number of Intel Collected: " + score + "/4";
+        }
+        
     }
 
     // Update is called once per frame
     public void AddPoint()
     {
         score++;
-        if(score < maxScore + 1)
+        if (score < maxScore + 1)
+        {
+            if (isTutorial)
+            {
+                intelText.text = "Number of Intel Collected: " + score + "/2";
+            }
+            else
+            {
+                intelText.text = "Number of Intel Collected: " + score + "/4";
+            }
+        }
+    }
+
+    public void SubtractPoint()
+    {
+        score--;
+        //if (score < maxScore + 1)
+        if (isTutorial)
+        {
+            intelText.text = "Number of Intel Collected: " + score + "/2";
+        }
+        else
+        {
             intelText.text = "Number of Intel Collected: " + score + "/4";
+        }
     }
 }

@@ -11,6 +11,7 @@ public class QuantumInventory : MonoBehaviour
     public KeyCode interact, action;
     public AudioClip open, close, pickUp, moveSlot, drop;
     public float distance;
+    public bool isTutorial = false;
 
     public IntelCollected scoreManager;
 
@@ -110,7 +111,14 @@ public class QuantumInventory : MonoBehaviour
                         Time.timeScale = 0f;
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
-                        scoreText.text = "You found " + IntelCollected.score + " out of 4 intel";
+                        if (isTutorial)
+                        {
+                            scoreText.text = "You found " + IntelCollected.score + " out of 2 intel";
+                        }
+                        else
+                        {
+                            scoreText.text = "You found " + IntelCollected.score + " out of 4 intel";
+                        }
                         escapeMenu.SetActive(true);
                         escapeMenuOn = true;
                     }
@@ -458,7 +466,10 @@ public class QuantumInventory : MonoBehaviour
 
     private void Drop(Slot slot)
     {
-
+        if (slot.isIntel)
+        {
+            scoreManager.SubtractPoint();
+        }
    
         GameObject[] interactionObjects = IntelManager.getInstance().getObjects();
         for (int i = 0; i < interactionObjects.Length; i++)

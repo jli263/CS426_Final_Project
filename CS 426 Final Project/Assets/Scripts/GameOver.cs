@@ -16,11 +16,6 @@ public class GameOver : MonoBehaviour
         gameoverPanel.SetActive(false);
     }
 
-    public void Update()
-    {
-       
-    }
-
     public void gameOver()
     {
         gameoverPanel.SetActive(true);
@@ -35,6 +30,12 @@ public class GameOver : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1f;
+    }
+
+    public void RestartTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
         Time.timeScale = 1f;
     }
 }
