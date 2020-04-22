@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class IntelManager
 {
-    private static IntelManager intelManager;
-
+    
     private GameObject[] objects;
 
-    private IntelManager() { }
-
-    public static IntelManager getInstance()
-    {
-        if (intelManager == null)
-        {
-            intelManager = new IntelManager();
-            intelManager.objects = GameObject.FindGameObjectsWithTag("InteractObject");
-        }
-        return intelManager;
+    public  IntelManager() {
+        objects = GameObject.FindGameObjectsWithTag("InteractObject");
     }
 
     public GameObject[] getObjects () {

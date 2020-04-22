@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class IntelCollected : MonoBehaviour
 {
     public Text intelText;
-    public int maxScore = 4;
+    public int maxScore = 6;
     public bool isTutorial = false;
 
     public static int score;
@@ -20,7 +20,7 @@ public class IntelCollected : MonoBehaviour
         }
         else
         {
-            intelText.text = "Number of Intel Collected: " + score + "/4";
+            intelText.text = "Number of Intel Collected: " + score + "/6";
         }
         
     }
@@ -37,7 +37,7 @@ public class IntelCollected : MonoBehaviour
             }
             else
             {
-                intelText.text = "Number of Intel Collected: " + score + "/4";
+                intelText.text = "Number of Intel Collected: " + score + "/6";
             }
         }
     }
@@ -52,7 +52,7 @@ public class IntelCollected : MonoBehaviour
         }
         else
         {
-            intelText.text = "Number of Intel Collected: " + score + "/4";
+            intelText.text = "Number of Intel Collected: " + score + "/6";
         }
     }
 }

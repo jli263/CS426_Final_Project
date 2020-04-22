@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class IntelManagerUser : MonoBehaviour
 {
+    static public IntelManager intelManager;
     // Start is called before the first frame update
     void Start()
     {
-        IntelManager.getInstance();
-        Debug.Log(IntelManager.getInstance().getObjects().Length);
+        intelManager = new IntelManager();
+        Debug.Log(intelManager.getObjects().Length);
     }
 
 }

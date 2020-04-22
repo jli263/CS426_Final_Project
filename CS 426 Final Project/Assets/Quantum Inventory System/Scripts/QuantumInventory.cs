@@ -117,7 +117,7 @@ public class QuantumInventory : MonoBehaviour
                         }
                         else
                         {
-                            scoreText.text = "You found " + IntelCollected.score + " out of 4 intel";
+                            scoreText.text = "You found " + IntelCollected.score + " out of 6 intel";
                         }
                         escapeMenu.SetActive(true);
                         escapeMenuOn = true;
@@ -471,7 +471,7 @@ public class QuantumInventory : MonoBehaviour
             scoreManager.SubtractPoint();
         }
    
-        GameObject[] interactionObjects = IntelManager.getInstance().getObjects();
+        GameObject[] interactionObjects = IntelManagerUser.intelManager.getObjects();
         for (int i = 0; i < interactionObjects.Length; i++)
         {
             if (interactionObjects[i].name.Equals(slot.item))

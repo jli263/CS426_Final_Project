@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     public GameObject menuPanel;
+    public GameObject controlPanel;
 
     private bool gamePaused = false;
 
@@ -51,5 +52,15 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void LoadControls()
+    {
+        controlPanel.SetActive(true);
+    }
+
+    public void returnFromControls()
+    {
+        controlPanel.SetActive(false);
     }
 }
