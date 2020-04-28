@@ -9,8 +9,10 @@ public class PlayerStats : GenericBehaviour
     public float days = 100f;
     public float daysOverTime = 0.25f;
 
+
+    public float maxhunger = 100f;
     public static float hunger = 100f;
-    public float hungerOverTime = 0.5f;
+    public float hungerOverTime = 0.4f;
 
     public float stamina = 100f;
     public float staminaOverTime = 25f;
@@ -18,11 +20,14 @@ public class PlayerStats : GenericBehaviour
     public Slider hungerBar;
     public Slider staminaBar;
     public Slider dayBar;
+
+    public GameOver gameOverScene;
     // Start is called before the first frame update
 
     Rigidbody myBody;
     void Start()
     {
+        hunger = maxhunger;
         behaviourManager.SubscribeBehaviour(this);
         myBody = GetComponent<Rigidbody>();
         hungerBar.maxValue = hunger;
@@ -80,12 +85,14 @@ public class PlayerStats : GenericBehaviour
 
         if (hunger <= 0.0f)
         {
-            Debug.Log("Player has Died");
+            //Debug.Log("Player has Died");
         }
 
         if (days <= 0.0f)
         {
-            Debug.Log("Player has run out of time");
+            gameOverScene.gameOver();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         if (stamina <= 0)
